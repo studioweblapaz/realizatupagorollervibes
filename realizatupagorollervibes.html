@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realiza tu Pago | Roller Vibes Mx La Paz</title>
+    <style>
+        :root {
+            --primary: #0FA6CC;
+            --bg: #000000;
+            --card: #ffffff;
+            --text: #000000;
+            --text-light: #000000;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .payment-card {
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        /* ESTILOS DEL LOGO */
+        .logo-img {
+            max-width: 120px; /* Ajusta este número si quieres el logo más grande o más pequeño */
+            height: auto;
+            margin-bottom: 12px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+        .data-box {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .data-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+        .data-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            word-break: break-all;
+        }
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+        .copy-btn:hover { background: #1d4ed8; }
+        .copy-btn:active { transform: scale(0.98); }
+        
+        .qr-section {
+            margin: 24px 0;
+            padding: 16px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+        }
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: #e2e8f0;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .qr-img {
+            max-width: 200px;
+            border-radius: 8px;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 14px;
+            width: 100%;
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 16px;
+            box-sizing: border-box;
+        }
+        .whatsapp-btn:hover { background: #128C7E; }
+        .security-note {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-card">
+    <!-- AQUÍ VA TU LOGO: Cambia "logo.png" por el nombre real de tu archivo -->
+    <img src="logo.png" alt="Logo Roller Vibes Mx La Paz" class="logo-img">
+    
+    <div class="logo">Roller Vibes Mx La Paz</div>
+    <div class="subtitle">Transferencia bancaria directa (SPEI / CoDi)<br>Sin comisiones intermediarias.</div>
+
+    <div class="data-box">
+        <div class="data-label">Banco</div>
+        <div class="data-value" id="bankName">Spin By Oxxo</div>
+    </div>
+
+    <div class="data-box">
+        <div class="data-label">Beneficiario</div>
+        <div class="data-value" id="beneficiary">David Hiram Iturbe Villaescusa</div>
+    </div>
+
+    <div class="data-box">
+        <div class="data-label">CLABE Interbancaria</div>
+        <div class="data-value" id="clabe">72 8969 0000 0465 0507</div>
+        <button class="copy-btn" onclick="copyToClipboard('clabe')">📋 Copiar CLABE</button>
+    </div>
+
+    <div class="qr-section">
+        <div class="data-label" style="text-align:center; margin-bottom:12px;">Escanea para pagar (CoDi / SPEI)</div>
+        <!-- AQUÍ VA TU QR: Cambia "qr.png" por el nombre real de tu archivo -->
+        <img src="qr.png" class="qr-img" alt="Próximamente pago con QR">
+    </div>
+
+    <div class="data-box">
+        <div class="data-label">Concepto recomendado</div>
+        <div class="data-value" id="concept">RV (mes:"Nov") (Nombre Alumno)</div>
+    </div>
+
+    <a href="#" id="wa-link" class="whatsapp-btn" target="_blank">
+        📱 Enviar comprobante por WhatsApp
+    </a>
+
+    <div class="security-note">
+        🔒 Tus datos están seguros. Esta página solo muestra información pública de recepción.
+    </div>
+</div>
+
+<script>
+    // CONFIGURACIÓN: Edita estos datos con tu información real
+    const config = {
+        phone: "5216124433992", // Tu número de WhatsApp con lada (521 + 10 dígitos)
+        defaultConcept: "RV (Ejemplo:"Nov") (Nombre Alumno)",
+        clabe: "728969000004650507"
+    };
+
+    // Función para copiar al portapapeles
+    function copyToClipboard(elementId) {
+        const text = document.getElementById(elementId).innerText.replace(/\s/g, '');
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "✅ ¡Copiado!";
+            btn.style.background = "#16a34a";
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = "";
+            }, 2000);
+        });
+    }
+
+    // Generar enlace de WhatsApp dinámico
+    const waMessage = `Hola, acabo de realizar la transferencia por el servicio acordado. Concepto: ${config.defaultConcept}. Adjunto mi comprobante.`;
+    document.getElementById('wa-link').href = `https://wa.me/${config.phone}?text=${encodeURIComponent(waMessage)}`;
+</script>
+
+</body>
+</html>
